@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="card">
+  <h5 class="card-header">Add Cards</h5>
+  <div class="card-body">
+    <h5 class="card-title">Access Loans</h5>
+    <p class="card-text">To qualify for the loans please add your card.</p>
+    <p class="card-text">We will charge you a minimum transaction to ensure it works.</p>
+
+  </div>
+</div>
+<h3>Card Details</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Brand</th>
+      <th scope="col">BIN</th>
+      <th scope="col">Last Four</th>
+      <th scope="col">Auth Code</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @card_details.each do |card_detail| %>
+    <tr>
+      <td> <%= card_detail.brand %> </td>
+      <td> <%= card_detail.bin %> </td>
+      <td> <%= card_detail.last_four %> </td>
+      <td> <%= card_detail.auth_code %> </td>
+      <td><%= link_to 'Apply for loan', loan_types_url %></td>
+      <td><%= link_to 'Destroy', card_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card', new_user_card_detail_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loan Applications</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Account Name</th>
+      <th scope="col">Bank Account</th>
+      <th scope="col">Loan Name</th>
+      <th scope="col">Loan Amount </th>
+      <th scope="col">Amount Due </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loan_applications.each do |loan_application| %>
+    <tr>
+      <td><%= loan_application.account_name %></td>
+      <td><%= loan_application.account_number %></td>
+      <td><%= loan_application.loan_type.name %></td>
+      <td><%= loan_application.loan_type.max_amount/100 %></td>
+      <td>
+        <%= loan_application.loan_type.max_amount/100 + (loan_application.loan_type.max_amount/100 * (loan_application.loan_type.interest_rate/100.0).to_f) %>
+      </td>
+      <td><%= link_to 'Show', user_loan_applications_path %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loan Application', new_user_loan_application_path %>

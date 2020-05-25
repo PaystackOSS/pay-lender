@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loan Types</h1>
+<div class="row">
+  <div class="card-deck">
+    <% @loan_types.each do |loan_type| %>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src='<%= loan_type.image_url %>' alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= loan_type.name %></h5>
+        <p class="card-text">
+          <%= loan_type.description %>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Loan limit:
+          <%= number_to_currency((loan_type.max_amount/100), unit: "GHS ", separator: ".", delimiter: ",") %></li>
+        <li class="list-group-item">Interest Rate: <%= loan_type.interest_rate %> %</li>
+        <lu class="list-group-item"> Repayment:
+          <%= number_to_currency(((loan_type.max_amount/100)*(loan_type.interest_rate.to_f/100)+(loan_type.max_amount/100)), unit: "GHS ", separator: ".", delimiter: ",") %>
+        </lu>
+      </ul>
+      <div class="card-body">
+        <%= link_to 'Get Loan', new_user_loan_application_path(:user_id => session[:current_user], :loan_type => "#{loan_type.id}")
+        %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Terms &amp; Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You accept to pay back the Repayment amount of
+          loan plus interest at the end of period.</p>
+
+        <p>To proceed please add the card you'll use for Repayment.</p>
+
+        <p>We will take a small charge to ensure it is valid & works.</p>
+        <p><%= session[:user]%></p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TODO: How to handle application -> initial charge -> Application goes through  -->
