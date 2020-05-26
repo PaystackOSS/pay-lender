@@ -26,9 +26,7 @@ class CardDetail < ApplicationRecord
 
   # Fetch the transaction from verify endpoint.
   def verify_transaction(transaction_ref)
-    verify = HTTParty.get(BASE_URI + "transaction/verify/#{transaction_ref}",
-                          headers: HEADERS)
-
-    # puts verify['data']
+    HTTParty.get("#{BASE_URI}transaction/verify/#{transaction_ref}",
+                 headers: HEADERS)
   end
 end
