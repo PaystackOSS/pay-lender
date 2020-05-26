@@ -39,7 +39,7 @@ class CardDetailsController < ApplicationController
                                   last_four: @request['data']['authorization']['last4'],
                                   brand: @request['data']['authorization']['brand'],
                                   country_code: @request['data']['authorization']['country_code'],
-                                  user_id: @user)
+                                  user_id: @user.id)
     puts @card_detail
     respond_to do |format|
       if @card_detail.save
