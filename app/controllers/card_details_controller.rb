@@ -40,6 +40,7 @@ class CardDetailsController < ApplicationController
                                   brand: @request['data']['authorization']['brand'],
                                   country_code: @request['data']['authorization']['country_code'],
                                   user_id: @user)
+    puts @card_detail
     respond_to do |format|
       if @card_detail.save
         format.html { redirect_to user_card_details_path(@user.id), notice: 'Card detail was successfully created.' }
