@@ -30,7 +30,7 @@ class CardDetailsController < ApplicationController
   # POST /card_details
   # POST /card_details.json
   def create
-    @request = CardDetail.new.verify_transaction(params[:trxref]).parsed_response
+    @request = CardDetail.new.verify_transaction(params[:trxref])
     puts @request
     @user = User.find_by_email(@request['data']['customer']['email'])
 
