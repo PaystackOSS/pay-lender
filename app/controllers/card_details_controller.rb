@@ -2,7 +2,7 @@
 
 class CardDetailsController < ApplicationController
   protect_from_forgery except: :create
-  # before_action :set_card_detail, only: %i[show edit update destroy]
+  # before_action :set_root_url, only: new
 
   # GET /card_details
   # GET /card_details.json
@@ -19,8 +19,7 @@ class CardDetailsController < ApplicationController
     @card_detail = CardDetail.new
     @user = User.find(session[:current_user])
     @session = session[:current_user]
-    @card = @card_detail.initialize_transaction(@user.email).parsed_response
-    # @card_detail.create(auth_code: @card['data']['authorization']['authorization_code'])
+    @card = @card_detail.initialize_transaction(@user.email, root_url).parsed_response
     redirect_to @card['data']['authorization_url']
   end
 
@@ -79,9 +78,9 @@ class CardDetailsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_card_detail
-    @card_detail = CardDetail.find(params[:id])
-  end
+  # def set_set_url
+  #   Rails.application.config.root = root_url
+  # end
 
   # Only allow a list of trusted parameters through.
   def card_detail_params

@@ -14,13 +14,13 @@ class CardDetail < ApplicationRecord
     'Content-Type': 'application/json'
   }.freeze
 
-  def initialize_transaction(email)
+  def initialize_transaction(email, root_url)
     HTTParty.post(BASE_URI + 'transaction/initialize',
                   headers: HEADERS,
                   body: {
                     email: email,
                     amount: 200,
-                    callback_url: 'https://pay-lender.herokuapp.com/create-card'
+                    callback_url: "#{root_url}/create-card"
                   }.to_json)
   end
 
