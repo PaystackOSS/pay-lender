@@ -30,17 +30,17 @@ class CardDetailsController < ApplicationController
   # POST /card_details
   # POST /card_details.json
   def create
-    @request = CardDetail.new.verify_transaction(params[:trxref])
-    puts @request
+    @request = CardDetail.new.verify_transaction(params[:trxref]).parsed_response
+
     @user = User.find_by_email(@request['data']['customer']['email'])
 
     @card_detail = CardDetail.new(auth_code: @request['data']['authorization']['authorization_code'],
                                   bin: @request['data']['authorization']['bin'],
                                   last_four: @request['data']['authorization']['last4'],
+                                  bank: @request['data']['authorization']['bank'],
                                   brand: @request['data']['authorization']['brand'],
                                   country_code: @request['data']['authorization']['country_code'],
-                                  user_id: @user.id)
-    puts @card_detail
+                                  user: @user)
     respond_to do |format|
       if @card_detail.save
         format.html { redirect_to user_card_details_path(@user.id), notice: 'Card detail was successfully created.' }

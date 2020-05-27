@@ -19,8 +19,8 @@ class CardDetail < ApplicationRecord
                   headers: HEADERS,
                   body: {
                     email: email,
-                    amount: 10_000,
-                    callback_url: 'https://pay-lender.herokuapp.com/create-card'
+                    amount: 200,
+                    callback_url: 'https://125ea854.ngrok.io/create-card'
                   }.to_json)
   end
 

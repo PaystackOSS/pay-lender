@@ -6,7 +6,7 @@ class LoanApplicationsController < ApplicationController
   # GET /loan_applications
   # GET /loan_applications.json
   def index
-    @loan_applications = LoanApplication.all
+    @loan_applications = LoanApplication.where(user_id: params[:user_id])
   end
 
   # GET /loan_applications/1

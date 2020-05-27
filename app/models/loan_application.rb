@@ -16,7 +16,7 @@ class LoanApplication < ApplicationRecord
 
   # Fetch a list of the Banks.
   def get_banks
-    HTTParty.get(BASE_URI + 'bank',
+    HTTParty.get(BASE_URI + 'bank?country=ghana',
                  headers: HEADERS).parsed_response
   end
 
