@@ -10,3 +10,7 @@ A sample lending app showing a basic integration of Paystack for usage in lendin
 * Database: PostgreSQL 
 
 * Configuration: Use `rails:credentials` to configure your Paystack secret key. (https://edgeguides.rubyonrails.org/security.html#custom-credentials)
+
+
+## Sample Demo
+https://pay-lender.herokuapp.com/
