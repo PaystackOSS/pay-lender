@@ -1,24 +1,12 @@
-# README
+# Pay-Lender
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A sample lending app showing a basic integration of Paystack for usage in lending.
 
-Things you may want to cover:
+## Requirements
+* Ruby version: 2.6.3
 
-* Ruby version
+* Rails version: 6.0.3
 
-* System dependencies
+* Database: PostgreSQL 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Configuration: Use `rails:credentials` to configure your Paystack secret key. (https://edgeguides.rubyonrails.org/security.html#custom-credentials)
