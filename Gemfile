@@ -20,7 +20,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Make HTTP API calls a party
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
 # Use db to manage sessions
 gem 'activerecord-session_store'
 # Use Redis adapter to run Action Cable in production
